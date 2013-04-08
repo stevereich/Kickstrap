@@ -112,14 +112,21 @@ title: Bootstrap Documentation
           <img src="/assets/img/examples/bootstrap-example-starter.png" alt="">
         </a>
         <h4>Starter template</h4>
-        <p>A barebones HTML document with all the Bootstrap CSS and JavaScript included.</p>
+        <p>A barebones HTML page with Bootstrap's CSS and JavaScript included.</p>
+      </div>
+      <div class="col-span-4">
+        <a class="thumbnail" href="/examples/grid/" target="_blank">
+          <img src="/assets/img/examples/bootstrap-example-grid.png" alt="">
+        </a>
+        <h4>Basic grid layouts</h4>
+        <p>Simple grid layouts to familiarize you with using the Bootstrap grid system.</p>
       </div>
       <div class="col-span-4">
         <a class="thumbnail" href="/examples/jumbotron/" target="_blank">
           <img src="/assets/img/examples/bootstrap-example-marketing.png" alt="">
         </a>
         <h4>Basic marketing site</h4>
-        <p>Featuring a hero unit for a primary message and three supporting elements.</p>
+        <p>Features a jumbotron for primary message and three supporting elements.</p>
       </div>
       <div class="col-span-4">
         <a class="thumbnail" href="/examples/jumbotron-narrow/" target="_blank">
@@ -254,12 +261,12 @@ title: Bootstrap Documentation
     <p>Going beyond light customizations and into visual overhauls is just as straightforward as the above custom button. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved, but well worth it in the end.</p>
 
     <div class="bs-docs-sidenote">
-      <p><strong>Side note:</strong> While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source Less code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
+      <p><strong>Alternate customization methods</strong></p>
+      <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source .less files (making upgrades super difficult), and the second is mapping source LESS code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither options are documented here.</p>
     </div>
 
     <h3>Removing potential bloat</h3>
     <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where bandwidth literally becomes a financial issue. We encourage folks to remove whatever is unused with our <a href="./customizer/">Customizer</a>.</p>
-    <p>**img**</p>
     <p>Using the Customizer, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>
 
   </div>
@@ -314,6 +321,8 @@ title: Bootstrap Documentation
     <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
   </div>
 
+
+
   <!-- Grid system
   ================================================== -->
   <div class="bs-docs-section" id="grid">
@@ -323,7 +332,7 @@ title: Bootstrap Documentation
     <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
 
     <h3 id="grid-example">Grid example</h3>
-    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-span-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
+    <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.col-span-*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.col-span-*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
     <div class="bs-docs-grid">
       <div class="row show-grid">
         <div class="col-span-1">1</div>
@@ -431,15 +440,30 @@ title: Bootstrap Documentation
 
     <h3 id="grid-column-ordering">Column ordering</h3>
     <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
-<div class="row show-grid">
-  <div class="col-span-9 col-push-3">9</div>
-  <div class="col-span-3 col-pull-9">3</div>
-</div>
+    <div class="row show-grid">
+      <div class="col-span-9 col-push-3">9</div>
+      <div class="col-span-3 col-pull-9">3</div>
+    </div>
 
 {% highlight html linenos %}
 <div class="row show-grid">
   <div class="col-span-9 col-push-3">9</div>
   <div class="col-span-3 col-pull-9">3</div>
+</div>
+{% endhighlight %}
+
+    <h3 id="grid-small">Small device grid</h3>
+    <p>Use the small device grid classes, like <code>.col-small-span-6</code>, to create columned layouts on phone and tablet devices (anything under 768px). Offsets, pushes, and pulls are not available with the small grid at this time.</p>
+    <div class="row show-grid">
+      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+      <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+      <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
+    </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+  <div class="col-span-4 col-small-span-6">4 cols, 6 small cols</div>
+  <div class="col-span-4 col-small-span-12">4 cols, 12 small cols</div>
 </div>
 {% endhighlight %}
 
@@ -1148,8 +1172,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Use contextual classes to color table rows.</p>
     <table class="table table-bordered table-striped">
       <colgroup>
-        <col class="span1">
-        <col class="span7">
+        <col class="col-span-1">
+        <col class="col-span-7">
       </colgroup>
       <thead>
         <tr>
@@ -1616,12 +1640,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
     <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
     <form class="bs-docs-example">
-      <div class="input-group span9">
+      <div class="input-group col-span-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group span6">
+      <div class="input-group col-span-6">
         <input type="text">
         <span class="input-group-addon">.00</span>
       </div>
@@ -1633,12 +1657,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group span9">
+<div class="input-group col-span-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group span6">
+<div class="input-group col-span-6">
   <input type="text">
   <span class="input-group-addon">.00</span>
 </div>
@@ -1653,33 +1677,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Optional sizes</h4>
     <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
     <form class="bs-docs-example">
-      <div class="input-group span9">
+      <div class="input-group col-span-9">
         <span class="input-group-addon input-large">@</span>
         <input type="text" class="input-large" placeholder="Username">
       </div>
       <br>
-      <div class="input-group span9">
+      <div class="input-group col-span-9">
         <span class="input-group-addon">@</span>
         <input type="text" placeholder="Username">
       </div>
       <br>
-      <div class="input-group span9">
+      <div class="input-group col-span-9">
         <span class="input-group-addon input-small">@</span>
         <input type="text" class="input-small" placeholder="Username">
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group span9">
+<div class="input-group col-span-9">
   <span class="input-group-addon input-large">@</span>
   <input type="text" class="input-large" placeholder="Username">
 </div>
 
-<div class="input-group span9">
+<div class="input-group col-span-9">
   <span class="input-group-addon">@</span>
   <input type="text" placeholder="Username">
 </div>
 
-<div class="input-group span9">
+<div class="input-group col-span-9">
   <span class="input-group-addon input-small">@</span>
   <input type="text" class="input-small" placeholder="Username">
 </div>
@@ -1688,14 +1712,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Buttons instead of text</h4>
     <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
     <form class="bs-docs-example">
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <span class="input-group-btn">
           <button class="btn" type="button">Go!</button>
         </span>
         <input type="text">
       </div>
       <br>
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <input type="text">
         <span class="input-group-btn">
           <button class="btn" type="button">Go!</button>
@@ -1703,14 +1727,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
   <input type="text">
 </div>
 
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <input type="text">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
@@ -1721,7 +1745,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <h4>Button dropdowns</h4>
     <p></p>
     <form class="bs-docs-example">
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <div class="input-group-btn">
           <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
@@ -1735,7 +1759,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
         <input type="text">
       </div><!-- /input-group -->
       <br>
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <input type="text">
         <div class="input-group-btn">
           <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1750,7 +1774,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div><!-- /input-group -->
     </form>
 {% highlight html linenos %}
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -1764,7 +1788,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <input type="text">
 </div><!-- /input-group -->
 
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <input type="text">
   <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
@@ -1781,7 +1805,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
     <h4>Segmented dropdown groups</h4>
     <form class="bs-docs-example">
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <div class="input-group-btn">
           <button class="btn" tabindex="-1">Action</button>
           <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1800,7 +1824,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
       <br>
 
-      <div class="input-group span7">
+      <div class="input-group col-span-7">
         <input type="text">
         <div class="input-group-btn">
           <button class="btn" tabindex="-1">Action</button>
@@ -1818,14 +1842,14 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
   <input type="text">
 </div>
 
-<div class="input-group span7">
+<div class="input-group col-span-7">
   <input type="text">
   <div class="input-group-btn btn-group">
     <!-- Button and dropdown menu -->
@@ -1852,13 +1876,13 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <h4>Column sizing</h4>
-    <p>Use <code>.span1</code> to <code>.span12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
+    <p>Use <code>.col-span-12</code> to <code>.col-span-12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
     <form class="bs-docs-example" style="padding-bottom: 15px;">
       <div class="controls docs-input-sizes">
-        <input class="span1" type="text" placeholder=".span1">
+        <input class="col-span-1" type="text" placeholder=".col-span-1">
         <input class="span2" type="text" placeholder=".span2">
         <input class="col-span-3" type="text" placeholder=".col-span-3">
-        <select class="span1">
+        <select class="col-span-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -1882,10 +1906,10 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       </div>
     </form>
 {% highlight html linenos %}
-<input class="span1" type="text" placeholder=".span1">
+<input class="col-span-1" type="text" placeholder=".col-span-1">
 <input class="span2" type="text" placeholder=".span2">
 <input class="col-span-3" type="text" placeholder=".col-span-3">
-<select class="span1">
+<select class="col-span-1">
   ...
 </select>
 <select class="span2">
@@ -2113,7 +2137,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 <input class="btn" type="button" value="Input">
 <input class="btn" type="submit" value="Submit">
 {% endhighlight %}
-    <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&lt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+    <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
 
   </div>
 
@@ -2536,6 +2560,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   </div>
 </div>
 {% endhighlight %}
+
+    <p class="alert alert-info">
+      <strong>Heads up!</strong>
+      Using icons without any additional content means the icons are not represented to screen reader users.
+    </p>
 
     <h5>Dropdown in a button group</h5>
     <div class="bs-docs-example">
@@ -3506,11 +3535,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="bs-docs-example">
       <div class="navbar">
         <div class="container">
-          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav">
@@ -3531,7 +3560,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
             <form class="navbar-form pull-left" action="">
-              <input type="text" class="span8" placeholder="Search">
+              <input type="text" class="col-span-8" placeholder="Search">
             </form>
             <ul class="nav pull-right">
               <li><a href="#">Link</a></li>
@@ -3556,11 +3585,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
   <div class="container">
 
     <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-    </a>
+    </button>
 
     <!-- Be sure to leave the brand out there if you want it shown -->
     <a class="navbar-brand" href="#">Title</a>
@@ -3574,20 +3603,20 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
     <div class="alert alert-info">
-      <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
+      <strong>Heads up!</strong> The responsive navbar requires the <a href="#collapse">collapse plugin</a>.
     </div>
 
 
     <h2>Inverted variation</h2>
     <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
     <div class="bs-docs-example">
-      <div class="navbar navbar-inverse" style="position: static;">
+      <div class="navbar navbar-inverse">
         <div class="container">
-          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="navbar-brand" href="#">Title</a>
           <div class="nav-collapse collapse navbar-inverse-collapse">
             <ul class="nav">
@@ -3608,7 +3637,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
             <form class="navbar-form pull-left" action="">
-              <input type="text" class="span8" placeholder="Search">
+              <input type="text" class="col-span-8" placeholder="Search">
             </form>
             <ul class="nav pull-right">
               <li><a href="#">Link</a></li>
@@ -3625,8 +3654,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               </li>
             </ul>
           </div><!-- /.nav-collapse -->
-        </div>
-      </div><!-- /navbar -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
     </div><!-- /example -->
 {% highlight html linenos %}
 <div class="navbar navbar-inverse">
@@ -3677,7 +3706,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Pagination</h1>
     </div>
-    <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="./components.html#pagination-pager">pager alternative</a>.</p>
+    <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="./docs/#pagination-pager">pager alternative</a>.</p>
 
     <h2 id="pagination-default">Standard pagination</h2>
     <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
@@ -4024,7 +4053,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Thumbnails</h1>
     </div>
-    <p class="lead">Extend Bootstrap's <a href="./css/#gridsystem">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
+    <p class="lead">Extend Bootstrap's <a href="./docs/#grid">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
 
     <h3>Default thumbnails</h3>
     <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
@@ -4124,7 +4153,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     <div class="page-header">
       <h1>Alerts</h1>
     </div>
-    <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="./javascript.html#alerts">alerts jQuery plugin</a>.</p>
+    <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="./docs/#js-alerts">alerts jQuery plugin</a>.</p>
 
     <h3 id="alerts-default">Default alert</h3>
     <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message. <strong>To ensure proper behavior across all devices</strong>, be sure to use <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
@@ -4780,7 +4809,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
 
     <h3 id="js-individual-compiled">Individual or compiled</h3>
-    <p>Plugins can be included individually (though some have required dependencies), or all at once. <strong>Do attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+    <p>Plugins can be included individually (though some have required dependencies), or all at once. <strong>Do not attempt to include both.</strong> Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
 
     <h3 id="js-data-attrs">Data attributes</h3>
     <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
@@ -5790,7 +5819,7 @@ $('#example').tooltip(options)
 
       <!-- Alert
       ================================================== -->
-      <section id="alerts">
+      <div class="bs-docs-section" id="js-alerts">
         <div class="page-header">
           <h1>Alert messages <small>bootstrap-alert.js</small></h1>
         </div>
@@ -5863,13 +5892,13 @@ $('#my-alert').bind('closed', function () {
   // do something…
 })
 {% endhighlight %}
-      </section>
+      </div>
 
 
 
           <!-- Buttons
           ================================================== -->
-          <section id="buttons">
+          <div class="bs-docs-section" id="js-buttons">
             <div class="page-header">
               <h1>Buttons <small>bootstrap-button.js</small></h1>
             </div>
@@ -6008,7 +6037,7 @@ $('.nav-tabs').button()
   $('.btn').button('complete')
 </script>
 {% endhighlight %}
-          </section>
+          </div>
 
 
 
@@ -6298,21 +6327,21 @@ $('#myCollapsible').on('hidden', function () {
                     <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
                       <h3>First slide label</h3>
-                      <p>Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </div>
                   </div>
                   <div class="item">
                     <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
                       <h3>Second slide label</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                   </div>
                   <div class="item">
                     <img data-src="holder.js/900x500/auto/#777:#777" alt="">
                     <div class="carousel-caption">
                       <h3>Third slide label</h3>
-                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </div>
                   </div>
                 </div>
