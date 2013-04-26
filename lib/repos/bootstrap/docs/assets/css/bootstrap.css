@@ -4782,6 +4782,7 @@ a.thumbnail:focus {
 }
 
 .label {
+  display: inline;
   padding: .25em .6em;
   font-size: 75%;
   font-weight: 500;
@@ -4794,42 +4795,47 @@ a.thumbnail:focus {
   border-radius: .25em;
 }
 
-a.label:hover,
-a.label:focus {
+.label[href]:hover,
+.label[href]:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+  background-color: #808080;
 }
 
 .label-danger {
   background-color: #d9534f;
 }
 
-.label-danger[href] {
+.label-danger[href]:hover,
+.label-danger[href]:focus {
   background-color: #c9302c;
-}
-
-.label-warning {
-  background-color: #f0ad4e;
-}
-
-.label-warning[href] {
-  background-color: #ec971f;
 }
 
 .label-success {
   background-color: #5cb85c;
 }
 
-.label-success[href] {
+.label-success[href]:hover,
+.label-success[href]:focus {
   background-color: #449d44;
+}
+
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+  background-color: #ec971f;
 }
 
 .label-info {
   background-color: #5bc0de;
 }
 
-.label-info[href] {
+.label-info[href]:hover,
+.label-info[href]:focus {
   background-color: #31b0d5;
 }
 
