@@ -9,7 +9,13 @@ define [
 		'app.filters'
 		'firebase'
 		'ngRoute'
-	]).config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+	]).config ['$routeProvider', '$locationProvider', '$provide', ($routeProvider, $locationProvider, $provide) ->
+		$provide.decorator '$sniffer', ($delegate) ->
+			$delegate.history = false
+			$delegate
+		$locationProvider
+			.hashPrefix('!')
+			.html5Mode(false)
 		for page in k$.settings.angular.pages
 			$routeProvider.when '/' + page, 
 				templateUrl: '/partials/' + page + '.html'
