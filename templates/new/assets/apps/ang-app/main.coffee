@@ -12,7 +12,6 @@ define [
 	]).config ['$routeProvider', '$locationProvider', '$provide', ($routeProvider, $locationProvider, $provide) ->
 		$provide.decorator '$sniffer', ($delegate) ->
 			$delegate.history = false
-			$delegate
 		$locationProvider
 			.hashPrefix('!')
 			.html5Mode(false)
